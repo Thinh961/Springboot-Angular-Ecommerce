@@ -10,6 +10,7 @@ import { ProductCategory } from 'src/app/common/product-category';
 export class ProductCategoryMenuComponent implements OnInit {
 
   productsCategories: ProductCategory[] = [];
+
   constructor(
     private productService: ProductService
   ) { }
@@ -20,7 +21,6 @@ export class ProductCategoryMenuComponent implements OnInit {
 
   listProductCategories() {
     this.productService.getProductCategories().subscribe(data => {
-      console.log(data);
       this.productsCategories = data;
     })
   }
