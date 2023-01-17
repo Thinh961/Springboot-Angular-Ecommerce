@@ -11,7 +11,9 @@ import { ActivatedRoute } from '@angular/router';
 export class ProductListComponent implements OnInit {
 
   products: Product[] = [];
-  currentCategoryId: number = 0;
+  currentCategoryId: number = 1;
+  prevCategoryId: number = 1;
+
   currentCategoryName: string = "";
   searchMode: boolean = false;
 
@@ -61,6 +63,11 @@ export class ProductListComponent implements OnInit {
       this.currentCategoryId = 1;
       this.currentCategoryName = 'Books';
     }
+
+    if (this.prevCategoryId != this.currentCategoryId) {
+      this.pageNumber = 1
+    }
+
     this.productService.getProductList(this.currentCategoryId).subscribe(data => {
       this.products = data;
       console.log(data);
