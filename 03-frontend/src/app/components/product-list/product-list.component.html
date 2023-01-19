@@ -8,7 +8,7 @@
         <div class="container py-5">
           <div class="row">
             <div class="col-lg-3" *ngFor="let item of products">
-              <div class="product_card">
+              <div class="product_card mb-4">
                 <div class="card border-0">
                   <div class="card-header bg-transparent border-0 p-0">
                     <img class="card-img-top" src="{{ item.imageUrl }}" alt="">
@@ -19,10 +19,11 @@
                       </div>
                     </div>
                     <div class="details-btn">
-                      <a routerLink="/products/{{ item.id }}" class="btn btn-dark">View Details <i class="fas fa-long-arrow-alt-right"></i></a>
+                      <a routerLink="/products/{{ item.id }}" class="btn btn-dark">View Details <i
+                          class="fas fa-long-arrow-alt-right"></i></a>
                     </div>
                   </div>
-                  <div class="card-body">
+                  <div class="card-body text-center">
                     <strong>
                       <a routerLink="/products/{{ item.id }}" class="text-body">{{ item.name }}</a>
                     </strong>
@@ -42,6 +43,27 @@
         </div>
 
       </div>
+
+      <div class="footer-panigation">
+        <div class="row">
+          <div class="col-md-6">
+            <ngb-pagination [(page)]="pageNumber" [pageSize]="pageSize" [collectionSize]="totalElements" [maxSize]="5"
+              [boundaryLinks]="true" (pageChange)="listProducts()">
+            </ngb-pagination>
+          </div>
+
+          <div class="col-md-6">
+            <span class=""><strong>Page size: </strong></span>
+            <select class="ml-2" #myPageSelect (change)="updatePageSize(myPageSelect.value)">
+                <option>5</option>
+                <option selected="true">10</option>
+                <option>20</option>
+                <option>50</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </div>
